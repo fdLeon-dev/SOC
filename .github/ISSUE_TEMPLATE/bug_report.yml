@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible defect in DefenseOS
+title: "bug: <short description>"
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Clear description of the bug
+      placeholder: Describe what happened and what you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide deterministic steps
+      placeholder: |
+        1. Start services
+        2. Go to page X
+        3. Submit action Y
+        4. Observe error Z
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Include relevant logs, stack traces, or images
+      placeholder: Paste logs here.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - backend
+        - frontend
+        - docs
+        - ci
+        - scripts
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python, Node, browser, and run mode
+      placeholder: Linux, Python 3.13, Node 20, Chrome, local

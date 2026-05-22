@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="DefenseOS Dashboard Placeholder">
+  <rect width="1280" height="720" fill="#0b1220"/>
+  <rect x="50" y="40" width="230" height="640" rx="12" fill="#141d35" stroke="#1e2d4a"/>
+  <rect x="310" y="40" width="920" height="120" rx="12" fill="#141d35" stroke="#1e2d4a"/>
+  <rect x="310" y="190" width="450" height="490" rx="12" fill="#141d35" stroke="#1e2d4a"/>
+  <rect x="780" y="190" width="450" height="490" rx="12" fill="#141d35" stroke="#1e2d4a"/>
+  <text x="770" y="360" text-anchor="middle" fill="#c8d6f0" font-size="40" font-family="Arial, sans-serif">DefenseOS Dashboard</text>
+  <text x="770" y="410" text-anchor="middle" fill="#6b7f9e" font-size="22" font-family="Arial, sans-serif">Replace with real screenshot</text>
+</svg>

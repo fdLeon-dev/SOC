@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-soc-bg text-soc-text;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-soc-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-soc-border rounded-full;
+  }
+}
+
+@layer components {
+  /* Glowing accent border used on cards */
+  .card-glow {
+    @apply border border-soc-border rounded-xl bg-soc-card
+           shadow-[0_0_15px_rgba(0,212,255,0.05)]
+           hover:shadow-[0_0_20px_rgba(0,212,255,0.12)]
+           transition-shadow duration-300;
+  }
+
+  /* Severity badge */
+  .badge-critical { @apply bg-red-900/40 text-soc-red border border-soc-red/40; }
+  .badge-high     { @apply bg-orange-900/40 text-soc-orange border border-soc-orange/40; }
+  .badge-medium   { @apply bg-yellow-900/40 text-soc-yellow border border-soc-yellow/40; }
+  .badge-low      { @apply bg-green-900/40 text-soc-green border border-soc-green/40; }
+  .badge-info     { @apply bg-blue-900/40 text-blue-300 border border-blue-300/40; }
+
+  /* Status badge */
+  .badge-open         { @apply bg-red-900/40 text-soc-red border border-soc-red/40; }
+  .badge-investigating { @apply bg-yellow-900/40 text-soc-yellow border border-soc-yellow/40; }
+  .badge-resolved     { @apply bg-green-900/40 text-soc-green border border-soc-green/40; }
+  .badge-false_positive { @apply bg-gray-900/40 text-soc-muted border border-soc-muted/40; }
+
+  /* Animated pulse dot for live indicator */
+  .live-dot::before {
+    content: '';
+    @apply inline-block w-2 h-2 rounded-full bg-soc-green mr-2
+           animate-pulse;
+  }
+}
