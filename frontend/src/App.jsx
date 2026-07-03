@@ -10,6 +10,8 @@ import Alerts from './pages/Alerts'
 import Events from './pages/Events'
 import Incidents from './pages/Incidents'
 import Metrics from './pages/Metrics'
+import Users from './pages/Users'
+import Audit from './pages/Audit'
 import { Network, Processes } from './pages/NetworkProcesses'
 
 function ProtectedRoute({ children, adminOnly = false }) {
@@ -45,6 +47,8 @@ export default function App() {
                     <Route path="/metrics"   element={<Metrics />} />
                     <Route path="/network"   element={<Network />} />
                     <Route path="/processes" element={<Processes />} />
+                    <Route path="/users"     element={<ProtectedRoute adminOnly><Users /></ProtectedRoute>} />
+                    <Route path="/audit"     element={<ProtectedRoute adminOnly><Audit /></ProtectedRoute>} />
                     <Route path="*"          element={<Navigate to="/" replace />} />
                   </Routes>
                 </AppLayout>

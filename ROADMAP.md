@@ -1,31 +1,31 @@
-# Roadmap
+# Hoja de ruta
 
-This roadmap is organized for portfolio impact and engineering maturity.
+Esta hoja de ruta está pensada para mejorar el impacto del proyecto y su madurez técnica.
 
-## v0.2 - Detection quality and API completeness
+## v0.2 - Calidad de detección y completitud de la API
 
-- Add auth refresh endpoint and token rotation flow
-- Add Users page route and admin user management UI
-- Add audit trail for alert and incident state transitions
-- Add pagination metadata for list endpoints
+- Añadir el endpoint de refresh de autenticación y el flujo de rotación de tokens
+- Añadir la ruta de Usuarios y una interfaz para gestión de usuarios admin
+- Añadir trazabilidad de cambios de estado en alertas e incidentes
+- Añadir metadatos de paginación en los listados
 
-## v0.3 - Correlation and response depth
+## v0.3 - Mayor profundidad en correlación y respuesta
 
-- Add rule packs by source type (auth, network, process, file)
-- Add deduplication and cooldown windows for noisy alerts
-- Add incident timeline events and operator notes feed
-- Add export options for incident reports
+- Añadir paquetes de reglas por tipo de fuente (auth, network, process, file)
+- Añadir deduplicación y ventanas de enfriamiento para alertas ruidosas
+- Añadir timeline de incidentes y notas del operador
+- Añadir opciones de exportación para reportes de incidentes
 
-## v0.4 - Hardening and production readiness
+## v0.4 - Endurecimiento y preparación para producción
 
-- Add websocket auth and connection authorization checks
-- Add environment-specific secure defaults
-- Add structured audit logging for security-sensitive actions
-- Add stricter CORS/host settings and deploy profiles
+- Añadir autenticación y validación de conexión en WebSocket
+- Añadir defaults seguros según el entorno
+- Añadir logging estructurado para acciones sensibles
+- Añadir configuraciones más estrictas de CORS/hosts y perfiles de despliegue
 
-## v0.5 - Portfolio excellence
+## v0.5 - Excelencia para portfolio
 
-- Publish architecture diagram assets in docs/media
-- Add benchmark scenario and measurable detection outcomes
-- Add CI quality gates (lint, tests, basic security checks)
-- Tag release notes with notable engineering milestones
+- Publicar activos del diagrama de arquitectura en docs/media
+- Añadir escenarios de benchmark y resultados medibles de detección
+- Añadir gates de calidad en CI (lint, tests, chequeos básicos de seguridad)
+- Etiquetar notas de release con hitos técnicos relevantes

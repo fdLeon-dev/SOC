@@ -9,11 +9,12 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.schemas.user import LoginRequest, TokenPair, UserOut
+from app.schemas.user import LoginRequest, RefreshRequest, TokenPair, UserOut
 from app.services.auth_service import (
     authenticate_user,
     get_current_user_from_token,
     issue_tokens,
+    refresh_access_token,
 )
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
@@ -30,6 +31,18 @@ async def login(body: LoginRequest, db: AsyncSession = Depends(get_db)):
             detail="Invalid credentials",
         )
     return issue_tokens(user)
+
+
+@router.post("/refresh", response_model=TokenPair)
+async def refresh(body: RefreshRequest, db: AsyncSession = Depends(get_db)):
+    """Exchange refresh token for new access + refresh token pair."""
+    token_pair = await refresh_access_token(db, body.refresh_token)
+    if not token_pair:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired refresh token",
+        )
+    return token_pair
 
 
 @router.get("/me", response_model=UserOut)

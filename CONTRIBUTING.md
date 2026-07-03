@@ -1,52 +1,52 @@
-# Contributing
+# Contribuir
 
-Thanks for contributing to DefenseOS.
+Gracias por colaborar con DefenseOS.
 
-## Development setup
+## Configuración para desarrollar
 
-1. Run setup script:
+1. Ejecuta el script de instalación:
 
 ```bash
 bash scripts/setup.sh
 ```
 
-2. Start local development:
+2. Inicia el entorno local:
 
 ```bash
 bash scripts/start-dev.sh
 ```
 
-## Local checks before PR
+## Revisiones locales antes de abrir un PR
 
-### Backend tests
+### Pruebas del backend
 
 ```bash
 cd backend
 .venv/bin/python -m pytest tests -v
 ```
 
-### Frontend build
+### Build del frontend
 
 ```bash
 cd frontend
 npm run build
 ```
 
-## Pull request expectations
+## Expectativas para pull requests
 
-- Keep PR scope focused
-- Explain security impact in the PR description
-- Add or update tests for behavior changes
-- Update docs when endpoints or setup steps change
+- Mantén el alcance del PR enfocado
+- Explica el impacto de seguridad en la descripción
+- Añade o actualiza pruebas si cambias comportamiento
+- Actualiza la documentación cuando cambien endpoints o pasos de instalación
 
-## Code style
+## Estilo de código
 
-- Backend: follow existing FastAPI + SQLAlchemy async patterns
-- Frontend: keep route guards and API layer consistent
-- Avoid adding unreviewed dependencies unless clearly justified
+- Backend: sigue los patrones existentes de FastAPI y SQLAlchemy async
+- Frontend: mantén consistentes los guardias de rutas y la capa de API
+- Evita añadir dependencias sin revisar si están justificadas
 
-## Security and ethics
+## Seguridad y ética
 
-This project is defensive and educational.
+Este proyecto es defensivo y educativo.
 
-Do not add offensive payloads, unauthorized scanning logic, or unsafe defaults in shared examples.
+No añadas payloads ofensivos, lógica de escaneo no autorizada ni valores por defecto inseguros en ejemplos compartidos.

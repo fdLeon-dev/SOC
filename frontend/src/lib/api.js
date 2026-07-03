@@ -1,6 +1,7 @@
 /**
  * DefenseOS - Axios API client
  * Automatically attaches the JWT access token from localStorage.
+ * Handles token refresh on 401 (Access Token Expired).
  */
 import axios from 'axios'
 
@@ -8,6 +9,19 @@ const api = axios.create({
   baseURL: '/api/v1',
   headers: { 'Content-Type': 'application/json' },
 })
+
+// Track if we're already refreshing to avoid race conditions
+let isRefreshing = false
+let refreshSubscribers = []
+
+const subscribeTokenRefresh = (callback) => {
+  refreshSubscribers.push(callback)
+}
+
+const onRefreshed = (token) => {
+  refreshSubscribers.forEach((cb) => cb(token))
+  refreshSubscribers = []
+}
 
 // Attach token to every request
 api.interceptors.request.use((config) => {
@@ -18,15 +32,51 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-// Auto-logout on 401
+// Handle 401: try refresh, re-attempt, or logout
 api.interceptors.response.use(
   (res) => res,
-  (err) => {
-    if (err.response?.status === 401) {
-      localStorage.removeItem('access_token')
-      localStorage.removeItem('refresh_token')
-      window.location.href = '/login'
+  async (err) => {
+    const originalRequest = err.config
+
+    if (err.response?.status === 401 && !originalRequest._retry) {
+      if (isRefreshing) {
+        // Token refresh in progress, queue this request
+        return new Promise((resolve) => {
+          subscribeTokenRefresh((token) => {
+            originalRequest.headers.Authorization = `Bearer ${token}`
+            resolve(api(originalRequest))
+          })
+        })
+      }
+
+      originalRequest._retry = true
+      isRefreshing = true
+
+      try {
+        const refresh_token = localStorage.getItem('refresh_token')
+        if (!refresh_token) throw new Error('No refresh token')
+
+        const res = await axios.post('/api/v1/auth/refresh', { refresh_token })
+        const { access_token, refresh_token: new_refresh } = res.data
+
+        localStorage.setItem('access_token', access_token)
+        localStorage.setItem('refresh_token', new_refresh)
+
+        isRefreshing = false
+        onRefreshed(access_token)
+
+        // Retry original request with new token
+        originalRequest.headers.Authorization = `Bearer ${access_token}`
+        return api(originalRequest)
+      } catch (_err) {
+        isRefreshing = false
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        window.location.href = '/login'
+        return Promise.reject(_err)
+      }
     }
+
     return Promise.reject(err)
   }
 )
@@ -37,6 +87,8 @@ export default api
 export const authApi = {
   login: (username, password) =>
     api.post('/auth/login', { username, password }),
+  refresh: (refresh_token) =>
+    api.post('/auth/refresh', { refresh_token }),
   me: () => api.get('/auth/me'),
 }
 
@@ -76,4 +128,10 @@ export const usersApi = {
   list: () => api.get('/users/'),
   create: (data) => api.post('/users/', data),
   update: (id, data) => api.patch(`/users/${id}`, data),
+  delete: (id) => api.delete(`/users/${id}`),
+}
+
+// ── Audit ─────────────────────────────────────────────────────────────────────
+export const auditApi = {
+  getLogs: (query = '') => api.get(`/audit/logs${query ? `?${query}` : ''}`),
 }

@@ -6,14 +6,15 @@ import Header from './Header'
 import { useLocation } from 'react-router-dom'
 
 const PAGE_TITLES = {
-  '/':           'SOC Dashboard',
-  '/alerts':     'Alerts',
-  '/events':     'Security Events',
-  '/incidents':  'Incident Management',
-  '/metrics':    'System Metrics',
-  '/network':    'Network Monitor',
-  '/processes':  'Process Monitor',
-  '/users':      'User Management',
+  '/':          'SOC Dashboard',
+  '/alerts':    'Alerts',
+  '/events':    'Security Events',
+  '/incidents': 'Incident Management',
+  '/metrics':   'System Metrics',
+  '/network':   'Network Monitor',
+  '/processes': 'Process Monitor',
+  '/users':     'User Management',
+  '/audit':     'Audit Logs',
 }
 
 export default function AppLayout({ children }) {

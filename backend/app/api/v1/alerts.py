@@ -52,9 +52,9 @@ async def patch_alert(
     alert_id: int,
     body: AlertUpdate,
     db: AsyncSession = Depends(get_db),
-    _=Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
+    current_user=Depends(require_roles(UserRole.ADMIN, UserRole.ANALYST)),
 ):
-    alert = await update_alert(db, alert_id, body)
+    alert = await update_alert(db, alert_id, body, username=current_user.username)
     if not alert:
         raise HTTPException(status_code=404, detail="Alert not found")
     return alert

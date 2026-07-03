@@ -21,6 +21,7 @@ const navItems = [
 
 const adminItems = [
   { to: '/users', icon: Users, label: 'Users' },
+  { to: '/audit', icon: Shield, label: 'Audit' },
 ]
 
 export default function Sidebar() {
@@ -29,9 +30,14 @@ export default function Sidebar() {
   return (
     <aside className="flex flex-col w-56 min-h-screen bg-soc-surface border-r border-soc-border shrink-0">
       {/* Logo */}
-      <div className="flex items-center gap-2 px-5 py-5 border-b border-soc-border">
-        <Shield className="w-7 h-7 text-soc-accent" />
-        <span className="text-lg font-bold text-white tracking-wide">DefenseOS</span>
+      <div className="flex items-center gap-3 px-5 py-5 border-b border-soc-border">
+        <div className="flex items-center justify-center w-11 h-11 rounded-2xl bg-soc-accent text-soc-bg shadow-lg shadow-soc-accent/20">
+          <span className="text-xl font-black">D</span>
+        </div>
+        <div>
+          <div className="text-lg font-bold text-white tracking-wide">DefenseOS</div>
+          <div className="text-xs uppercase text-soc-muted tracking-[0.2em]">SOC Command</div>
+        </div>
       </div>
 
       {/* Main nav */}

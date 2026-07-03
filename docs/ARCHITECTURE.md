@@ -1,73 +1,73 @@
-# DefenseOS Architecture
+# Arquitectura de DefenseOS
 
-## High-level flow
+## Flujo general
 
-1. System logs and host metrics are collected by backend services.
-2. Raw signals become SecurityEvent records.
-3. Correlation rules evaluate events and create Alert records when needed.
-4. Analysts use the frontend to triage alerts and manage Incident records.
-5. Metrics are exposed via REST and WebSocket channels.
+1. Los servicios del backend recogen logs del sistema y métricas del host.
+2. Las señales en bruto se convierten en registros de eventos de seguridad.
+3. Las reglas de correlación evalúan esos eventos y crean alertas cuando corresponde.
+4. El frontend permite revisar alertas y gestionar incidentes.
+5. Las métricas se exponen mediante REST y canales WebSocket.
 
-## Components
+## Componentes
 
 ### Backend
 
-- Entry point: backend/app/main.py
-- API routers: backend/app/api/v1/
-- Domain models: backend/app/models/
-- Business services: backend/app/services/
-- Core config/security/db/logging: backend/app/core/
+- Punto de entrada: backend/app/main.py
+- Rutas de la API: backend/app/api/v1/
+- Modelos de dominio: backend/app/models/
+- Servicios de negocio: backend/app/services/
+- Configuración, seguridad, base de datos y logging: backend/app/core/
 
 ### Frontend
 
-- Router shell: frontend/src/App.jsx
-- Global auth state: frontend/src/lib/AuthContext.jsx
-- API client and endpoints: frontend/src/lib/api.js
-- Main pages: frontend/src/pages/
+- Estructura de rutas: frontend/src/App.jsx
+- Estado global de autenticación: frontend/src/lib/AuthContext.jsx
+- Cliente de API y endpoints: frontend/src/lib/api.js
+- Páginas principales: frontend/src/pages/
 
-## Security model
+## Modelo de seguridad
 
-- JWT access tokens for API access
-- Role-based access control in dependency layer
-- Protected frontend routes with auth guard
+- Tokens JWT para acceso a la API
+- Control de acceso por roles en la capa de dependencias
+- Rutas protegidas en el frontend con guardias de autenticación
 
-## Data model summary
+## Resumen del modelo de datos
 
-- User: authentication and role
-- SecurityEvent: raw normalized event
-- Alert: actionable item derived from event
-- Incident: investigation lifecycle, can group alerts
+- User: autenticación y rol
+- SecurityEvent: evento normalizado en bruto
+- Alert: elemento accionable derivado de un evento
+- Incident: ciclo de investigación, puede agrupar alertas
 
-## Runtime jobs
+## Tareas en tiempo de ejecución
 
-### Log monitoring loop
+### Bucle de monitoreo de logs
 
-- Tails configured host log files
-- Runs keyword triage rules
-- Persists events and triggers alert correlation
+- Sigue archivos de logs configurados del host
+- Ejecuta reglas simples de triage por palabras clave
+- Persiste eventos y dispara la correlación de alertas
 
-### Metrics broadcast loop
+### Bucle de difusión de métricas
 
-- Collects periodic host metrics
-- Broadcasts metric payloads to websocket clients
+- Recolecta métricas periódicas del host
+- Envía los payloads a los clientes por WebSocket
 
-## Deployment modes
+## Modos de despliegue
 
-### Local development
+### Desarrollo local
 
 - scripts/setup.sh
 - scripts/start-dev.sh
 
-### Docker compose
+### Docker Compose
 
 - docker-compose.yml
-- backend service on port 8000
-- frontend service on port 80
+- servicio backend en el puerto 8000
+- servicio frontend en el puerto 80
 
-## Current known gaps
+## Limitaciones conocidas
 
-- Refresh token endpoint is documented but not currently exposed in auth router
-- Frontend sidebar includes Users nav item without Users page route implementation
-- WebSocket metrics endpoint currently has no explicit token validation
+- El endpoint de refresh token está documentado, pero no está expuesto en el router de autenticación.
+- La barra lateral del frontend incluye una opción de Usuarios, aunque aún no existe la ruta correspondiente.
+- El endpoint de métricas por WebSocket no tiene validación explícita de token.
 
-These are good next milestones for portfolio maturity.
+Estos son buenos siguientes pasos para que el proyecto madure un poco más.

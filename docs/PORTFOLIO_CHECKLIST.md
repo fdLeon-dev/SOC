@@ -1,40 +1,40 @@
-# Portfolio Checklist for DefenseOS
+# Lista de revisión para DefenseOS
 
-Use this checklist before sharing the repository publicly.
+Usa esta lista antes de compartir el repositorio públicamente.
 
-## Repository quality
+## Calidad del repositorio
 
-- README clearly states value proposition
-- Setup steps run successfully on clean machine
-- Architecture and demo docs are present
-- Roadmap reflects realistic next milestones
+- El README deja claro el valor del proyecto
+- Los pasos de instalación funcionan en una máquina limpia
+- Existen documentos de arquitectura y demo
+- La hoja de ruta refleja próximos pasos realistas
 
-## Engineering signals recruiters look for
+## Señales de ingeniería que buscan los reclutadores
 
-- Automated tests pass
-- CI checks run on pull requests
-- Security-relevant assumptions are documented
-- Commit history shows consistent progress
+- Las pruebas automatizadas pasan
+- Los checks de CI corren en pull requests
+- Las suposiciones relevantes de seguridad están documentadas
+- El historial de commits muestra progreso constante
 
-## Demo readiness
+## Preparación para la demo
 
-- 1 short video or GIF in docs/media
-- 1 end-to-end runbook script
-- 1 architecture diagram
-- 1 short list of measurable outcomes
+- 1 video corto o GIF en docs/media
+- 1 guía de demo de extremo a extremo
+- 1 diagrama de arquitectura
+- 1 lista breve de resultados medibles
 
-## Profile integration
+## Integración con el perfil
 
-- Repository pinned on GitHub profile
-- Consistent naming and topic tags
-- Project linked from profile README
-- Highlight role: Purple Team / Detection Engineering
+- El repositorio aparece fijado en el perfil de GitHub
+- El nombre y los temas son consistentes
+- El proyecto está enlazado desde el README del perfil
+- Se destaca el rol: Purple Team / Detection Engineering
 
-## Suggested measurable outcomes section
+## Sección de resultados medibles sugeridos
 
-Track and publish values such as:
+Puedes ir registrando valores como:
 
-- Number of event sources ingested
-- Alert volume and status distribution
-- Mean time to triage in sample workflow
-- Coverage map by event category and severity
+- Número de fuentes de eventos ingestas
+- Volumen de alertas y distribución por estado
+- Tiempo promedio de triage en un flujo de ejemplo
+- Mapa de cobertura por categoría y severidad de eventos

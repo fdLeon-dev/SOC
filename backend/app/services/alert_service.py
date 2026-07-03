@@ -14,6 +14,7 @@ from app.core.logging import get_logger
 from app.models.alert import Alert, AlertSeverity, AlertStatus
 from app.models.event import EventSeverity, SecurityEvent
 from app.schemas.alert import AlertCreate, AlertStats, AlertUpdate
+from app.services.audit_service import log_audit
 
 logger = get_logger(__name__)
 
@@ -28,7 +29,7 @@ _SEVERITY_MAP = {
 }
 
 
-async def create_alert(db: AsyncSession, data: AlertCreate) -> Alert:
+async def create_alert(db: AsyncSession, data: AlertCreate, username: str = "system") -> Alert:
     """Persist a new alert."""
     alert = Alert(
         title=data.title,
@@ -41,6 +42,12 @@ async def create_alert(db: AsyncSession, data: AlertCreate) -> Alert:
     await db.flush()
     await db.refresh(alert)
     logger.info("alert_created", alert_id=alert.id, severity=alert.severity)
+    
+    # Log to audit trail
+    await log_audit(
+        db, username, "alert", alert.id, "create",
+        f"Alert created with severity={alert.severity.value}, rule={alert.rule_name}"
+    )
     return alert
 
 
@@ -71,18 +78,33 @@ async def maybe_create_alert_from_event(
 
 
 async def update_alert(
-    db: AsyncSession, alert_id: int, data: AlertUpdate
+    db: AsyncSession, alert_id: int, data: AlertUpdate, username: str = "system"
 ) -> Optional[Alert]:
     result = await db.execute(select(Alert).where(Alert.id == alert_id))
     alert = result.scalar_one_or_none()
     if not alert:
         return None
+    
+    # Track what changed
+    changes = []
     for field, value in data.model_dump(exclude_none=True).items():
+        old_value = getattr(alert, field, None)
+        if old_value != value:
+            changes.append(f"{field}: {old_value} → {value}")
         setattr(alert, field, value)
+    
     alert.updated_at = datetime.now(timezone.utc)
     db.add(alert)
     await db.flush()
     await db.refresh(alert)
+    
+    # Log to audit trail if there were changes
+    if changes:
+        await log_audit(
+            db, username, "alert", alert.id, "update",
+            ", ".join(changes)
+        )
+    
     return alert
 
 

@@ -1,51 +1,51 @@
-# GitHub Profile README Template (Security Engineer)
+# Plantilla de README para el perfil de GitHub (Security Engineer)
 
-Replace placeholders and publish in your profile repository.
+Sustituye los placeholders y publícalo en el repositorio de tu perfil.
 
-## Header
+## Encabezado
 
-- Name and role statement
-- One-line specialization
+- Nombre y declaración de rol
+- Especialización en una línea
 
-Example:
+Ejemplo:
 
-Purple Team Engineer focused on offensive validation and detection engineering.
+Purple Team Engineer enfocado en validación ofensiva y detección.
 
-## About
+## Sobre mí
 
-I build practical security systems that connect attack simulation with defensive detection and incident response.
+Creo sistemas prácticos de seguridad que conectan la simulación ofensiva con la detección defensiva y la respuesta a incidentes.
 
-## Focus areas
+## Áreas de enfoque
 
-- Offensive tooling in controlled environments
-- Detection engineering and alert correlation
-- SOC automation and investigation workflows
-- DevSecOps and security quality gates
+- Herramientas ofensivas en entornos controlados
+- Detección y correlación de alertas
+- Automatización de SOC y flujos de investigación
+- DevSecOps y gates de calidad en seguridad
 
-## Featured projects
+## Proyectos destacados
 
 1. DefenseOS
-- End-to-end SOC lab with events, alerts, incidents, and telemetry.
+- Laboratorio de SOC completo con eventos, alertas, incidentes y telemetría.
 
 2. Offensive Validation Lab
-- Controlled attack simulation to test detection coverage.
+- Simulación controlada para probar la cobertura de detección.
 
 3. Detection Rules Pack
-- Rules and tests mapped to ATT&CK techniques.
+- Reglas y pruebas alineadas con técnicas de ATT&CK.
 
-## Impact highlights
+## Hitos de impacto
 
-- Built reproducible security labs with automated setup
-- Implemented event to alert correlation workflows
-- Added CI and testing to security-focused codebases
+- Construí laboratorios de seguridad reproducibles con instalación automatizada
+- Implementé flujos de correlación de eventos a alertas
+- Añadí CI y pruebas a proyectos orientados a seguridad
 
-## Contact
+## Contacto
 
-- LinkedIn: <your-link>
-- Email: <your-email>
-- Blog/Notes: <optional-link>
+- LinkedIn: <tu-link>
+- Email: <tu-email>
+- Blog/Notas: <link-opcional>
 
-## Notes
+## Notas
 
-Keep profile concise and outcome-driven.
-Avoid listing every tool without proof projects.
+Mantén el perfil breve y orientado a resultados.
+Evita listar todas las herramientas sin demostrar proyectos concretos.

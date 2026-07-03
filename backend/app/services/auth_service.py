@@ -79,6 +79,29 @@ async def get_current_user_from_token(
     return await get_user_by_id(db, user_id)
 
 
+async def refresh_access_token(
+    db: AsyncSession, refresh_token: str
+) -> Optional[TokenPair]:
+    """
+    Validate refresh_token and issue new access + refresh tokens.
+    Returns None if refresh_token is invalid or expired.
+    """
+    try:
+        payload = decode_token(refresh_token)
+        if payload.get("type") != "refresh":
+            return None
+        user_id = int(payload["sub"])
+    except (JWTError, KeyError, ValueError):
+        return None
+    
+    user = await get_user_by_id(db, user_id)
+    if not user or not user.is_active:
+        return None
+    
+    # Issue new token pair (rotate refresh token for security)
+    return issue_tokens(user)
+
+
 async def ensure_admin_exists(db: AsyncSession, settings) -> None:
     """Create the bootstrap admin account if no users exist."""
     result = await db.execute(select(User).where(User.username == settings.FIRST_ADMIN_USERNAME))

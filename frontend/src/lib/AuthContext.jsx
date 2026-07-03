@@ -1,6 +1,7 @@
 /**
  * DefenseOS - Auth Context
  * Global authentication state shared across the app.
+ * Handles login, logout, and automatic token refresh on 401.
  */
 import { createContext, useContext, useState, useEffect } from 'react'
 import { authApi } from '../lib/api'
@@ -41,8 +42,23 @@ export function AuthProvider({ children }) {
     setUser(null)
   }
 
+  // Manual refresh (automatic refresh is handled by Axios interceptor)
+  const refresh = async () => {
+    const refresh_token = localStorage.getItem('refresh_token')
+    if (!refresh_token) return false
+    try {
+      const r = await authApi.refresh(refresh_token)
+      localStorage.setItem('access_token', r.data.access_token)
+      localStorage.setItem('refresh_token', r.data.refresh_token)
+      return true
+    } catch {
+      logout()
+      return false
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, refresh }}>
       {children}
     </AuthContext.Provider>
   )

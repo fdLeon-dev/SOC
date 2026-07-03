@@ -1,26 +1,26 @@
-# GitHub Overview Kit
+# Kit de presentación para GitHub
 
-Use this file to quickly optimize how DefenseOS appears in GitHub.
+Puedes usar este archivo para mejorar cómo se ve DefenseOS en GitHub.
 
-## Repository name
+## Nombre del repositorio
 
 DefenseOS
 
-## Short description (About field)
+## Descripción corta (campo About)
 
-End-to-end SOC lab: host telemetry, event triage, alert correlation, and incident management with FastAPI + React.
+Laboratorio de SOC completo: telemetría del host, triage de eventos, correlación de alertas y gestión de incidentes con FastAPI + React.
 
-## Alternative About descriptions
+## Descripciones alternativas para About
 
-1. Blue Team and detection engineering lab with events, alerts, incidents, and live metrics.
-2. Practical SOC platform for defensive operations, built with FastAPI, SQLAlchemy async, and React.
-3. Portfolio-ready security engineering project covering event ingestion to incident workflow.
+1. Laboratorio de Blue Team y detección con eventos, alertas, incidentes y métricas en vivo.
+2. Plataforma práctica de SOC para operaciones defensivas, construida con FastAPI, SQLAlchemy async y React.
+3. Proyecto de ingeniería de seguridad orientado a portfolio que cubre desde la ingesta de eventos hasta el flujo de incidentes.
 
-## Website field (optional)
+## Campo de website (opcional)
 
-If you deploy a demo, put the frontend URL here.
+Si despliegas una demo, puedes poner aquí la URL del frontend.
 
-## Suggested topics
+## Temas sugeridos
 
 - soc
 - blue-team
@@ -31,28 +31,28 @@ If you deploy a demo, put the frontend URL here.
 - react
 - purple-team
 
-## Pinned repository caption
+## Pie de repositorio fijado
 
-DefenseOS: end-to-end defensive SOC workflow from telemetry and events to alert triage and incident response.
+DefenseOS: flujo defensivo de SOC desde la telemetría y los eventos hasta el triage de alertas y la respuesta a incidentes.
 
-## One-liner for LinkedIn or CV
+## Frase breve para LinkedIn o CV
 
-Built DefenseOS, an end-to-end SOC lab that ingests host signals, correlates alerts, and supports incident operations in a FastAPI + React stack.
+Desarrollé DefenseOS, un laboratorio de SOC completo que recibe señales del host, correlaciona alertas y apoya operaciones de incidentes con FastAPI y React.
 
-## First screenshot checklist
+## Lista de capturas recomendadas
 
-Add images under docs/media and reference them in README:
+Añade imágenes en docs/media y referéncialas desde el README:
 
-1. Login page
-2. Dashboard with KPIs
-3. Alerts table with state transition
-4. Incidents workflow page
+1. Página de login
+2. Panel con métricas clave
+3. Tabla de alertas con cambios de estado
+4. Página de flujo de incidentes
 
-## README first-screen checklist
+## Lista para la primera pantalla del README
 
-Above the fold, keep these visible:
+En la parte visible al abrir el repositorio, conviene dejar esto:
 
-1. One-line value proposition
-2. What problem it solves
-3. Quick start (2 commands)
-4. Demo/runbook link
+1. Una propuesta de valor en una línea
+2. El problema que resuelve
+3. Inicio rápido en 2 comandos
+4. Enlace a la guía o demo
