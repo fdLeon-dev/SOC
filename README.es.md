@@ -17,6 +17,24 @@ La app está pensada para sentirse más como un laboratorio práctico que como u
 
 Está diseñada para ser sencilla de seguir. Puedes iniciar sesión, ver cómo se actualiza el tablero, revisar alertas y avanzar en el trabajo de incidentes sin cambiar entre distintas herramientas.
 
+## Capturas
+
+### Login
+
+![Login](docs/media/login.svg)
+
+### Dashboard
+
+![Dashboard](docs/media/dashboard.svg)
+
+### Alertas
+
+![Alertas](docs/media/alerts.svg)
+
+### Incidentes
+
+![Incidentes](docs/media/incidents.svg)
+
 ## Cómo correrlo localmente
 
 Si quieres probarlo, la ruta más sencilla es:

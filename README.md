@@ -17,6 +17,24 @@ The app is meant to feel like a practical lab rather than a polished product. It
 
 It is designed to be simple to follow. You can log in, watch the dashboard update, review alerts, and move through incident work without switching between separate tools.
 
+## Screenshots
+
+### Login
+
+![Login](docs/media/login.svg)
+
+### Dashboard
+
+![Dashboard](docs/media/dashboard.svg)
+
+### Alerts
+
+![Alerts](docs/media/alerts.svg)
+
+### Incidents
+
+![Incidents](docs/media/incidents.svg)
+
 ## Running locally
 
 If you want to try it out, the easiest path is:
