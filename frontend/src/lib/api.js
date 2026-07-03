@@ -5,8 +5,21 @@
  */
 import axios from 'axios'
 
+const resolveBaseURL = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL
+  }
+
+  const host = window.location.hostname
+  if (host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0') {
+    return 'http://127.0.0.1:8000/api/v1'
+  }
+
+  return '/api/v1'
+}
+
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: resolveBaseURL(),
   headers: { 'Content-Type': 'application/json' },
 })
 
@@ -56,7 +69,7 @@ api.interceptors.response.use(
         const refresh_token = localStorage.getItem('refresh_token')
         if (!refresh_token) throw new Error('No refresh token')
 
-        const res = await axios.post('/api/v1/auth/refresh', { refresh_token })
+        const res = await api.post('/auth/refresh', { refresh_token })
         const { access_token, refresh_token: new_refresh } = res.data
 
         localStorage.setItem('access_token', access_token)

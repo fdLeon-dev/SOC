@@ -2,22 +2,22 @@
 
 [English](README.md) | [Espanol](README.es.md)
 
-A small project I built to explore how a SOC workflow can feel when the pieces are connected instead of split apart. It takes host signals, turns them into events, groups them into alerts, and helps keep incident work in one place.
+Un proyecto pequeño que construí para explorar cómo se siente un flujo de SOC cuando las piezas están conectadas en lugar de separadas. Toma señales del host, las convierte en eventos, las agrupa en alertas y ayuda a mantener el trabajo de incidentes en un solo lugar.
 
-## What it does
+## Qué hace
 
-The app is meant to feel like a practical lab rather than a polished product. It lets you:
+La app está pensada para sentirse más como un laboratorio práctico que como un producto pulido. Permite:
 
-- collect basic host activity and logs
-- organize those signals into security events
-- raise alerts when something stands out
-- keep incident notes and status in one place
+- recopilar actividad básica del host y logs
+- organizar esas señales en eventos de seguridad
+- generar alertas cuando algo destaca
+- mantener notas y estado de incidentes en un mismo lugar
 
-## A quick look
+## Una mirada rápida
 
-It is designed to be simple to follow. You can log in, watch the dashboard update, review alerts, and move through incident work without switching between separate tools.
+Está diseñada para ser sencilla de seguir. Puedes iniciar sesión, ver cómo se actualiza el tablero, revisar alertas y avanzar en el trabajo de incidentes sin cambiar entre distintas herramientas.
 
-## Screenshots
+## Capturas
 
 ### Login
 
@@ -27,39 +27,59 @@ It is designed to be simple to follow. You can log in, watch the dashboard updat
 
 ![Dashboard](docs/media/dashboard.svg)
 
-### Alerts
+### Alertas
 
-![Alerts](docs/media/alerts.svg)
+![Alertas](docs/media/alerts.svg)
 
-### Incidents
+### Incidentes
 
-![Incidents](docs/media/incidents.svg)
+![Incidentes](docs/media/incidents.svg)
 
-## Running locally
+### System
 
-If you want to try it out, the easiest path is:
+![System](docs/media/system.svg)
+
+### Network
+
+![Network](docs/media/network.svg)
+
+### Processes
+
+![Processes](docs/media/processes.svg)
+
+### Users
+
+![Users](docs/media/users.svg)
+
+### Audit Logs
+
+![Audit Logs](docs/media/auditlogs.svg)
+
+## Cómo correrlo localmente
+
+Si quieres probarlo, la ruta más sencilla es:
 
 ```bash
 bash scripts/setup.sh
 bash scripts/start-dev.sh
 ```
 
-On Windows:
+En Windows:
 
 ```bat
 scripts\start-dev.bat
 ```
 
-The local app is usually available at:
+La app local suele quedar disponible en:
 
 - Frontend: http://localhost:5173
 - API docs: http://localhost:8000/api/docs
 
-Default login:
+Inicio de sesión por defecto:
 
-- Username: admin
-- Password: Admin1234!
+- Usuario: admin
+- Contraseña: Admin1234!
 
-## Notes
+## Notas
 
-This project was built as a learning and practice space for defensive workflows. It is not meant to replace a real security operations setup, but it is useful for getting a better feel for how the pieces fit together.
+Este proyecto se hizo como espacio de aprendizaje y práctica para flujos defensivos. No está pensado para reemplazar una solución real de operaciones de seguridad, pero sí sirve para entender mejor cómo encajan las distintas piezas.

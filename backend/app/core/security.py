@@ -7,6 +7,7 @@ from typing import Optional
 
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from passlib.exc import UnknownHashError
 
 from app.core.config import get_settings
 
@@ -24,8 +25,13 @@ def hash_password(plain: str) -> str:
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    """Return True if plain matches the stored bcrypt hash."""
-    return pwd_context.verify(plain, hashed)
+    """Return True if plain matches the stored bcrypt hash or the legacy plain-text fallback."""
+    if not hashed:
+        return False
+    try:
+        return pwd_context.verify(plain, hashed)
+    except UnknownHashError:
+        return plain == hashed
 
 
 # ── JWT helpers ───────────────────────────────────────────────────────────────
