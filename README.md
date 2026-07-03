@@ -27,9 +27,6 @@ Está diseñada para ser sencilla de seguir. Puedes iniciar sesión, ver cómo s
 
 ![Dashboard](docs/media/dashboard.svg)
 
-### Alertas
-
-![Alertas](docs/media/alerts.svg)
 
 ### Incidentes
 
